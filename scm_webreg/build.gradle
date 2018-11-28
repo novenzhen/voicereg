@@ -1,0 +1,81 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.17.RELEASE'
+        baiduvoiceVersion='4.8.0'
+        mp3spiVersion='1.9.5.4'
+        fastjsonVersion='1.2.51'
+        javeVersion='2.4.4'
+        collections4Version='4.2'
+        commonlang3Version='3.8.1'
+        commonsIoVersion='2.6'
+        swagger2Version = "2.8.0"
+        gsonVersion='2.8.5'
+        mockitoVersion='1.10.19'
+
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.choice.scm'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+apply plugin: 'maven'
+group 'com.choice.scm'
+version '1.0-SNAPSHOT'
+dependencyManagement {
+
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.SR5"
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+    }
+    resolutionStrategy {
+        cacheChangingModulesFor 0, "seconds"
+    }
+    applyMavenExclusions = false
+    generatedPomCustomization {
+        enabled = false
+    }
+}
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('com.fasterxml.jackson.core:jackson-databind')
+    implementation('redis.clients:jedis')
+    implementation("org.projectlombok:lombok")
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    compileOnly("org.springframework.boot:spring-boot-configuration-processor")
+    implementation('org.springframework.cloud:spring-cloud-starter-eureka')
+    implementation("org.springframework.cloud:spring-cloud-starter-feign")
+    implementation("com.baidu.aip:java-sdk:${baiduvoiceVersion}")
+    implementation("com.googlecode.soundlibs:mp3spi:${mp3spiVersion}")
+    implementation("com.alibaba:fastjson:${fastjsonVersion}")
+    implementation("ws.schild:jave-all-deps:${javeVersion}")
+    implementation("org.apache.commons:commons-lang3:${commonlang3Version}")
+    implementation("org.apache.commons:commons-collections4:${collections4Version}")
+    implementation("commons-io:commons-io:${commonsIoVersion}")
+    implementation ("io.springfox:springfox-swagger2:${swagger2Version}")
+    implementation ("io.springfox:springfox-swagger-ui:${swagger2Version}")
+    implementation("com.google.code.gson:gson:${gsonVersion}")
+    testCompile("org.mockito:mockito-all:${mockitoVersion}")
+}
+
