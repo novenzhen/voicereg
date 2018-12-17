@@ -11,6 +11,7 @@ buildscript {
         swagger2Version = "2.8.0"
         gsonVersion='2.8.5'
         mockitoVersion='1.10.19'
+        apolloClientVersion = "0.10.2"
 
     }
     repositories {
@@ -31,8 +32,11 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     mavenCentral()
     maven { url "https://repo.spring.io/milestone" }
+    maven { url "http://repo.choicesaas.cn/nexus/content/groups/public" }
+    maven { url "http://repo.choicesaas.cn/nexus/content/repositories/releases/" }
 }
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -77,5 +81,6 @@ dependencies {
     compile ("io.springfox:springfox-swagger-ui:${swagger2Version}")
     compile("com.google.code.gson:gson:${gsonVersion}")
     testCompile("org.mockito:mockito-all:${mockitoVersion}")
+    compile("com.ctrip.framework.apollo:apollo-client:${apolloClientVersion}")
 }
 
