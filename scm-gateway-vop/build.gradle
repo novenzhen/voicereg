@@ -61,6 +61,9 @@ dependencyManagement {
     }
 }
 dependencies {
+    apply plugin: 'application'
+    mainClassName='com.choice.scm.webreg.WebregApplication'
+
     compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('com.fasterxml.jackson.core:jackson-databind')
