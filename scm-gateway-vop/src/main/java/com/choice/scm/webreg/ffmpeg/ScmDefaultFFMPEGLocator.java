@@ -125,6 +125,7 @@ public class ScmDefaultFFMPEGLocator extends ScmFFMPEGLocator {
         LOG.info("resourceName:" +resourceName );
         try
         {
+            LOG.info(getClass().getResourceAsStream(resourceName));
             copy(getClass().getResourceAsStream(resourceName), dest.getAbsolutePath());
         }
         catch (NullPointerException ex)
