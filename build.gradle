@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+allprojects {
+    group = 'com.choice.scm'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "http://repo.choicesaas.cn/nexus/content/groups/public" }
+        maven { url "http://repo.choicesaas.cn/nexus/content/repositories/releases/" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
