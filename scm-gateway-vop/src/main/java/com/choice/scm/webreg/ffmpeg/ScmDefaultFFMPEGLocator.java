@@ -57,6 +57,7 @@ public class ScmDefaultFFMPEGLocator extends ScmFFMPEGLocator {
      */
     public ScmDefaultFFMPEGLocator() {
         String os = System.getProperty("os.name").toLowerCase();
+        LOG.info("os is " + os);
         boolean isWindows = os.contains("windows");
         boolean isMac = os.contains("mac");
 
@@ -64,6 +65,7 @@ public class ScmDefaultFFMPEGLocator extends ScmFFMPEGLocator {
         File dirFolder = new File(System.getProperty("java.io.tmpdir"), "jave/");
         if (!dirFolder.exists())
         {
+            LOG.info("create jave directory!");
             dirFolder.mkdirs();
         }
 
@@ -88,6 +90,7 @@ public class ScmDefaultFFMPEGLocator extends ScmFFMPEGLocator {
         // Need a chmod?
         if (!isWindows)
         {
+            LOG.info("system is not windows!");
             try
             {
                 Runtime.getRuntime().exec(new String[]
@@ -119,6 +122,7 @@ public class ScmDefaultFFMPEGLocator extends ScmFFMPEGLocator {
      */
     private void copyFile(String path, File dest) {
         String resourceName= "native/" + path;
+        LOG.info("resourceName:" +resourceName );
         try
         {
             copy(getClass().getResourceAsStream(resourceName), dest.getAbsolutePath());
