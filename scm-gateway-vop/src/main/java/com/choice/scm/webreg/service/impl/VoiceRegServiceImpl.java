@@ -32,7 +32,7 @@ public class VoiceRegServiceImpl implements IVoiceRegService {
     private final static String PCM="pcm";
     private final static int FILE_RATE=16000;
     private final static int DEV_PID=1536;
-
+    private VoiceTestUtils voiceTestUtils=new VoiceTestUtils();
 
 
     /**
@@ -43,7 +43,8 @@ public class VoiceRegServiceImpl implements IVoiceRegService {
      */
     @Override
     public Result voiceReg(VoiceFileParam voiceFileParam, MultipartFile file) {
-        byte[] content= VoiceTestUtils.audioToPcm(VoiceTestUtils.createFileFromMultiPartFile(voiceFileParam,file));
+
+        byte[] content= voiceTestUtils.audioToPcm(voiceTestUtils.createFileFromMultiPartFile(voiceFileParam,file));
         if(ObjectUtils.isEmpty(content)){
             return Result.failure(ResultCode.FILE_TRANSFER_ERROR);
         }

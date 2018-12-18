@@ -40,7 +40,7 @@ public class VoiceTestUtils {
      * @param sourceFile
      * @return
      */
-    public static byte[] audioToPcm(File sourceFile){
+    public byte[] audioToPcm(File sourceFile){
         File targetFile=new File(ConvertParamConstants.TMP_FILE_PATH+sourceFile.getName()+".pcm");
         log.info("create target file ,filename is {}",targetFile.getAbsolutePath());
         String cmd=getConverCmd(sourceFile.getAbsolutePath(),targetFile.getAbsolutePath());
@@ -71,7 +71,7 @@ public class VoiceTestUtils {
      * @param targetPath
      * @return
      */
-    private static String getConverCmd(String sourcePath,String targetPath){
+    public String getConverCmd(String sourcePath,String targetPath){
         return ConvertParamConstants.PCM_SOURCE_PARAMS+sourcePath+ConvertParamConstants.PCM_TARGET_PARAMS+targetPath;
 
     }
@@ -82,7 +82,7 @@ public class VoiceTestUtils {
      * @param file
      * @return
      */
-    public static File createFileFromMultiPartFile(VoiceFileParam voiceFileParam, MultipartFile file){
+    public File createFileFromMultiPartFile(VoiceFileParam voiceFileParam, MultipartFile file){
         File tmpSourceFille=new File(ConvertParamConstants.TMP_FILE_PATH+ UUID.randomUUID()+FILE_SEPERATOR+voiceFileParam.getFileFormat());
         try {
             FileUtils.copyInputStreamToFile(file.getInputStream(), tmpSourceFille);
