@@ -7,6 +7,7 @@ import com.choice.scm.webreg.rest.BaiduResponce;
 import com.choice.scm.webreg.rest.Result;
 import com.choice.scm.webreg.rest.ResultCode;
 import com.choice.scm.webreg.service.IVoiceRegService;
+import com.choice.scm.webreg.utils.AudioFileConvertUtils;
 import com.choice.scm.webreg.utils.VoiceTestUtils;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
@@ -31,7 +32,6 @@ public class VoiceRegServiceImpl implements IVoiceRegService {
     private final static String PCM="pcm";
     private final static int FILE_RATE=16000;
     private final static int DEV_PID=1536;
-    private VoiceTestUtils voiceTestUtils=new VoiceTestUtils();
 
 
     /**
@@ -43,7 +43,7 @@ public class VoiceRegServiceImpl implements IVoiceRegService {
     @Override
     public Result voiceReg(VoiceFileParam voiceFileParam, MultipartFile file) {
 
-        byte[] content= voiceTestUtils.audioToPcm(voiceTestUtils.createFileFromMultiPartFile(voiceFileParam,file));
+        byte[] content= AudioFileConvertUtils.audioToPcm(AudioFileConvertUtils.createFileFromMultiPartFile(voiceFileParam,file));
         if(ObjectUtils.isEmpty(content)){
             return Result.failure(ResultCode.FILE_TRANSFER_ERROR);
         }
