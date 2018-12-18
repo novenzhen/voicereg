@@ -32,13 +32,13 @@ import java.nio.file.StandardCopyOption;
  * The default ffmpeg executable locator, which exports on disk the ffmpeg
  * executable bundled with the library distributions. It should work both for
  * windows and many linux distributions. If it doesn't, try compiling your own
- * ffmpeg executable and plug it in JAVE with a custom {@link FFMPEGLocator}.
+ * ffmpeg executable and plug it in JAVE with a custom {@link ScmFFMPEGLocator}.
  *
  * @author Carlo Pelliccia
  */
-public class DefaultFFMPEGLocator extends FFMPEGLocator {
+public class ScmDefaultFFMPEGLocator extends ScmFFMPEGLocator {
 
-    private final static Log LOG = LogFactory.getLog(FFMPEGExecutor.class);
+    private final static Log LOG = LogFactory.getLog(ScmFFMPEGExecutor.class);
 
     /**
      * Trace the version of the bundled ffmpeg executable. It's a counter: every
@@ -55,7 +55,7 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
      * It builds the default FFMPEGLocator, exporting the ffmpeg executable on a
      * temp file.
      */
-    public DefaultFFMPEGLocator() {
+    public ScmDefaultFFMPEGLocator() {
         String os = System.getProperty("os.name").toLowerCase();
         boolean isWindows = os.contains("windows");
         boolean isMac = os.contains("mac");

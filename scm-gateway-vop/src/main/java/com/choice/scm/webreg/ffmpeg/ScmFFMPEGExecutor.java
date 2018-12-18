@@ -31,9 +31,9 @@ import java.util.ArrayList;
  *
  * @author Carlo Pelliccia
  */
-public class FFMPEGExecutor {
+public class ScmFFMPEGExecutor {
 
-    private final static Log LOG = LogFactory.getLog(FFMPEGExecutor.class);
+    private final static Log LOG = LogFactory.getLog(ScmFFMPEGExecutor.class);
 
     /**
      * The path of the ffmpeg executable.
@@ -54,7 +54,7 @@ public class FFMPEGExecutor {
      * A process killer to kill the ffmpeg process with a shutdown hook, useful
      * if the jvm execution is shutted down during an ongoing encoding process.
      */
-    private ProcessKiller ffmpegKiller = null;
+    private ScmProcessKiller ffmpegKiller = null;
 
     /**
      * A stream reading from the ffmpeg process standard output channel.
@@ -76,7 +76,7 @@ public class FFMPEGExecutor {
      *
      * @param ffmpegExecutablePath The path of the ffmpeg executable.
      */
-    public FFMPEGExecutor(String ffmpegExecutablePath) {
+    public ScmFFMPEGExecutor(String ffmpegExecutablePath) {
         this.ffmpegExecutablePath = ffmpegExecutablePath;
     }
 
@@ -118,7 +118,7 @@ public class FFMPEGExecutor {
         }catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ffmpegKiller = new ProcessKiller(ffmpeg);
+        ffmpegKiller = new ScmProcessKiller(ffmpeg);
         runtime.addShutdownHook(ffmpegKiller);
         inputStream = ffmpeg.getInputStream();
         outputStream = ffmpeg.getOutputStream();
@@ -136,7 +136,7 @@ public class FFMPEGExecutor {
         }catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ffmpegKiller = new ProcessKiller(ffmpeg);
+        ffmpegKiller = new ScmProcessKiller(ffmpeg);
         runtime.addShutdownHook(ffmpegKiller);
         inputStream = ffmpeg.getInputStream();
         outputStream = ffmpeg.getOutputStream();

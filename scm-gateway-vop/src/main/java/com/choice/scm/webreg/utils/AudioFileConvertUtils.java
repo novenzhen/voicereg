@@ -2,9 +2,9 @@ package com.choice.scm.webreg.utils;
 
 
 import com.choice.scm.webreg.ffmpeg.ConvertParamConstants;
-import com.choice.scm.webreg.ffmpeg.DefaultFFMPEGLocator;
-import com.choice.scm.webreg.ffmpeg.FFMPEGExecutor;
-import com.choice.scm.webreg.ffmpeg.FFMPEGLocator;
+import com.choice.scm.webreg.ffmpeg.ScmDefaultFFMPEGLocator;
+import com.choice.scm.webreg.ffmpeg.ScmFFMPEGExecutor;
+import com.choice.scm.webreg.ffmpeg.ScmFFMPEGLocator;
 import com.choice.scm.webreg.param.VoiceFileParam;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -28,8 +28,8 @@ import java.util.UUID;
 public  class AudioFileConvertUtils {
     private static final Logger log= LoggerFactory.getLogger(AudioFileConvertUtils.class);
 
-    private static final FFMPEGLocator locator=new DefaultFFMPEGLocator();
-    private static final FFMPEGExecutor ffmpeg=locator.createExecutor();
+    private static final ScmFFMPEGLocator locator=new ScmDefaultFFMPEGLocator();
+    private static final ScmFFMPEGExecutor ffmpeg=locator.createExecutor();
     private static final String FILE_SEPERATOR=".";
 
 

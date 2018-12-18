@@ -18,34 +18,34 @@
  */
 package com.choice.scm.webreg.ffmpeg;
 
-import ws.schild.jave.Encoder;
-
 /**
- * Abstract class whose derived concrete instances are used by {@link Encoder}
- * to locate the ffmpeg executable path.
+ * A package-private utility to add a shutdown hook to kill ongoing encoding
+ * processes at the jvm shutdown.
  *
  * @author Carlo Pelliccia
- * @see Encoder
  */
-public abstract class FFMPEGLocator {
+class ScmProcessKiller extends Thread {
 
     /**
-     * This method should return the path of a ffmpeg executable suitable for
-     * the current machine.
-     *
-     * @return The path of the ffmpeg executable.
+     * The process to kill.
      */
-    protected abstract String getFFMPEGExecutablePath();
+    private final Process process;
 
     /**
-     * It returns a brand new {@link FFMPEGExecutor}, ready to be used in a
-     * ffmpeg call.
+     * Builds the killer.
      *
-     * @return A newly instanced {@link FFMPEGExecutor}, using this locator to
-     * call the ffmpeg executable.
+     * @param process The process to kill.
      */
-    public FFMPEGExecutor createExecutor() {
-        return new FFMPEGExecutor(getFFMPEGExecutablePath());
+    public ScmProcessKiller(Process process) {
+        this.process = process;
+    }
+
+    /**
+     * It kills the supplied process.
+     */
+    @Override
+    public void run() {
+        process.destroy();
     }
 
 }
