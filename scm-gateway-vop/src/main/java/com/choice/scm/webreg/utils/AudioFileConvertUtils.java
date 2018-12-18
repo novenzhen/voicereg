@@ -29,7 +29,8 @@ public  class AudioFileConvertUtils {
     private static final Logger log= LoggerFactory.getLogger(AudioFileConvertUtils.class);
 
     private static final String FILE_SEPERATOR=".";
-
+    private static final ScmFFMPEGLocator locator=new ScmDefaultFFMPEGLocator();
+    private static final ScmFFMPEGExecutor ffmpeg=locator.createExecutor();
 
     /**
      * 音频文件转化
@@ -43,8 +44,6 @@ public  class AudioFileConvertUtils {
         byte[] result=null;
         try {
             log.info("convert file cmd is {}",cmd);
-            ScmFFMPEGLocator locator=new ScmDefaultFFMPEGLocator();
-            ScmFFMPEGExecutor ffmpeg=locator.createExecutor();
             ffmpeg.execute(cmd);
             InputStream inputStream=new FileInputStream(targetFile);
             result=IOUtils.toByteArray(inputStream);
