@@ -12,9 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,25 +32,6 @@ public class AudioFileConvertUtils {
     private static final FFMPEGExecutor ffmpeg=locator.createExecutor();
     private static final String FILE_SEPERATOR=".";
 
-
-    /**
-     * mpc音频流转化为pcm
-     * @param mp3Stream
-     * @return
-     * @throws Exception
-     */
-    public static byte[] mp3Convertpcm(InputStream mp3Stream) throws Exception {
-        // 原MP3文件转AudioInputStream
-        AudioInputStream mp3audioStream = AudioSystem.getAudioInputStream(mp3Stream);
-        // 将AudioInputStream MP3文件 转换为PCM AudioInputStream
-        AudioInputStream pcmaudioStream = AudioSystem.getAudioInputStream(AudioFormat.Encoding.PCM_SIGNED,
-                mp3audioStream);
-        byte[] pcmBytes = IOUtils.toByteArray(pcmaudioStream);
-        pcmaudioStream.close();
-        mp3audioStream.close();
-
-        return pcmBytes;
-    }
 
     /**
      * 音频文件转化
