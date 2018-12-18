@@ -7,7 +7,6 @@ import com.choice.scm.webreg.rest.BaiduResponce;
 import com.choice.scm.webreg.rest.Result;
 import com.choice.scm.webreg.rest.ResultCode;
 import com.choice.scm.webreg.service.IVoiceRegService;
-import com.choice.scm.webreg.utils.AudioFileConvertUtils;
 import com.choice.scm.webreg.utils.VoiceTestUtils;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
