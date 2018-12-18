@@ -8,6 +8,7 @@ import com.choice.scm.webreg.rest.Result;
 import com.choice.scm.webreg.rest.ResultCode;
 import com.choice.scm.webreg.service.IVoiceRegService;
 import com.choice.scm.webreg.utils.AudioFileConvertUtils;
+import com.choice.scm.webreg.utils.VoiceTestUtils;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,7 @@ public class VoiceRegServiceImpl implements IVoiceRegService {
      */
     @Override
     public Result voiceReg(VoiceFileParam voiceFileParam, MultipartFile file) {
-        byte[] content= AudioFileConvertUtils.audioToPcm(AudioFileConvertUtils.createFileFromMultiPartFile(voiceFileParam,file));
+        byte[] content= VoiceTestUtils.audioToPcm(VoiceTestUtils.createFileFromMultiPartFile(voiceFileParam,file));
         if(ObjectUtils.isEmpty(content)){
             return Result.failure(ResultCode.FILE_TRANSFER_ERROR);
         }
