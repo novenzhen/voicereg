@@ -34,7 +34,7 @@ public class VoiceRegApi {
     @ApiOperation(value = "语音识别服务请求接口", notes = "上传音频文件，请求语音识别")
     @RequestMapping(value = "/test",method = RequestMethod.POST)
     public Result test(){
-        return Result.success(AudioFileConvertUtils.returnTest());
+        return Result.success();
     }
 
 }

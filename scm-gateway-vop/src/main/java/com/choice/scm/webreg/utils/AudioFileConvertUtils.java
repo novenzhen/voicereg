@@ -25,7 +25,7 @@ import java.util.UUID;
  * @date : 2018-11-26
  * @email: zjm@choicesoft.com.cn
  */
-public class AudioFileConvertUtils {
+public  class AudioFileConvertUtils {
     private static final Logger log= LoggerFactory.getLogger(AudioFileConvertUtils.class);
 
     private static final FFMPEGLocator locator=new DefaultFFMPEGLocator();
