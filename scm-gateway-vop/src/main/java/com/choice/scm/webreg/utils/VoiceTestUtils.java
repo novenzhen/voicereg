@@ -35,31 +35,5 @@ public class VoiceTestUtils {
     private static final String FILE_SEPERATOR=".";
 
 
-    /**
-     * 组装命令
-     * @param sourcePath
-     * @param targetPath
-     * @return
-     */
-    public String getConverCmd(String sourcePath,String targetPath){
-        return ConvertParamConstants.PCM_SOURCE_PARAMS+sourcePath+ConvertParamConstants.PCM_TARGET_PARAMS+targetPath;
 
-    }
-
-    /**
-     * 创建临时文件
-     * @param voiceFileParam
-     * @param file
-     * @return
-     */
-    public File createFileFromMultiPartFile(VoiceFileParam voiceFileParam, MultipartFile file){
-        File tmpSourceFille=new File(ConvertParamConstants.TMP_FILE_PATH+ UUID.randomUUID()+FILE_SEPERATOR+voiceFileParam.getFileFormat());
-        try {
-            FileUtils.copyInputStreamToFile(file.getInputStream(), tmpSourceFille);
-        } catch (IOException e) {
-            e.printStackTrace();
-            log.error("create tmp file error,msg={},errmsg={}",e.getMessage(),e.getStackTrace());
-        }
-        return tmpSourceFille;
-    }
 }
