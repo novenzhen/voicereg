@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
-import static com.choice.scm.webreg.ffmpeg.ConvertParamConstants.TMP_FILE_PATH;
+
 
 /**
  * @author : noven.zhen
@@ -39,7 +39,7 @@ public class AudioFileConvertUtils {
      * @return
      */
     public static byte[] audioToPcm(File sourceFile){
-        File targetFile=new File(TMP_FILE_PATH+sourceFile.getName()+".pcm");
+        File targetFile=new File(ConvertParamConstants.TMP_FILE_PATH+sourceFile.getName()+".pcm");
         log.info("create target file ,filename is {}",targetFile.getAbsolutePath());
         String cmd=getConverCmd(sourceFile.getAbsolutePath(),targetFile.getAbsolutePath());
         byte[] result=null;
@@ -81,7 +81,7 @@ public class AudioFileConvertUtils {
      * @return
      */
     public static File createFileFromMultiPartFile(VoiceFileParam voiceFileParam,MultipartFile file){
-        File tmpSourceFille=new File(TMP_FILE_PATH+UUID.randomUUID()+FILE_SEPERATOR+voiceFileParam.getFileFormat());
+        File tmpSourceFille=new File(ConvertParamConstants.TMP_FILE_PATH+UUID.randomUUID()+FILE_SEPERATOR+voiceFileParam.getFileFormat());
         try {
             FileUtils.copyInputStreamToFile(file.getInputStream(), tmpSourceFille);
         } catch (IOException e) {
