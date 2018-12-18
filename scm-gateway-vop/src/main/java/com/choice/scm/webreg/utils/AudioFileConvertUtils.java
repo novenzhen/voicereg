@@ -2,9 +2,9 @@ package com.choice.scm.webreg.utils;
 
 
 import com.choice.scm.webreg.ffmpeg.ConvertParamConstants;
-import com.choice.scm.webreg.ffmpeg.ScmDefaultFFMPEGLocator;
-import com.choice.scm.webreg.ffmpeg.ScmFFMPEGExecutor;
-import com.choice.scm.webreg.ffmpeg.ScmFFMPEGLocator;
+import ws.schild.jave.ScmDefaultFFMPEGLocator;
+import ws.schild.jave.ScmFFMPEGExecutor;
+import ws.schild.jave.ScmFFMPEGLocator;
 import com.choice.scm.webreg.param.VoiceFileParam;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
